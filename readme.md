@@ -9,7 +9,7 @@
 
 <hr style='border-style:dotted'>
 <h2>Perfomance Graph</h2>
-
+![https://github.com/PranjalDby/HeartDiseasePredictor/blob/main/assets/output.png]
 ---
 
 ## Streamlit App
