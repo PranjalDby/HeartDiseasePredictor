@@ -9,7 +9,8 @@
 
 <hr style='border-style:dotted'>
 <h2>Perfomance Graph</h2>
-![https://github.com/PranjalDby/HeartDiseasePredictor/blob/main/assets/output.png]
+
+![](https://github.com/PranjalDby/HeartDiseasePredictor/blob/main/assets/output.png)
 ---
 
 ## Streamlit App
@@ -36,3 +37,4 @@ You can interactively use the heart disease prediction model via a Streamlit web
 
 # Output
 ! ===============================
+![](https://github.com/PranjalDby/HeartDiseasePredictor/blob/main/assets/Screenshot%202025-07-17%20at%208.51.57%E2%80%AFAM.png)
