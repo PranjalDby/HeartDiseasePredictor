@@ -12,12 +12,12 @@ def cap_outliers(series):
     return series.apply(lambda x: upper if x > upper else lower if x < lower else x)
 
 ######## ----------------------------------------------------- main Logic
-if os.path.exists('deep_learning_tf/cipherProject/model_res'):
-    st.write('FOund')
+if os.path.exists('./model_res'):
+    st.write('Running model...')
 
 
 ## loading the model
-with open('./model_res/decision_treeModel.pkl', 'rb') as f:
+with open('model_res/decision_treeModel.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # You may need to load scaler, imputer, and pca as well
