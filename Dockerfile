@@ -1,5 +1,6 @@
 FROM python:3.12-alpine
 
+#creating the workdir for container
 WORKDIR /usr/local/app
 
 # installing the depencies
@@ -18,5 +19,6 @@ EXPOSE 8501
 RUN adduser -D app
 USER app
 ENTRYPOINT []
+
 # running the app
 CMD ["streamlit","run", "streamlit.py"]
