@@ -18,7 +18,7 @@ jobs:
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
       
     - name: Run container
-      run: docker pull ${{ env.IMAGE_NAME }} \
+      run: docker pull ${{ env.IMAGE_NAME }}
           docker run -d -p 8080:8080 --name my-container ${{ env.IMAGE_NAME }}
   
     - name: Display running containers
