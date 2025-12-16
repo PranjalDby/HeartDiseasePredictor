@@ -17,12 +17,12 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                echo 'Building Docker image...'
-                script {
-                    docker.build("${IMAGE_NAME}:${BUILD_NUMBER}")
-                }
+                sh '''
+                docker build -t heart_disease_predictor .
+                '''
             }
         }
+        
         stage('Deploy Container') {
             steps {
                 echo 'Deploying container...'
