@@ -8,12 +8,12 @@ pipeline {
 
     stages {
 
-        stage('Checkout Source Code') {
-            steps {
-                git branch: 'main',
-                    url:'https://github.com/PranjalDby/HeartDiseasePredictor.git'
-            }
-        }
+        // stage('Checkout Source Code') {
+        //     steps {
+        //         git branch: 'main',
+        //             url:'https://github.com/PranjalDby/HeartDiseasePredictor.git'
+        //     }
+        // }
 
         stage('Build Docker Image') {
             steps {
