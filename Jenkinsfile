@@ -2,38 +2,37 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "pranjaldby/heart_disease_pred"
-        CONTAINER_NAME = "heart_disease_pred"
+        IMAGE_NAME = "heart_disease_predictor"
+        CONTAINER_NAME = "heart_disease_predictor"
+        PORT = "8080"
     }
 
     stages {
 
-        // stage('Checkout Source Code') {
-        //     steps {
-        //         git branch: 'main',
-        //             url:'https://github.com/PranjalDby/HeartDiseasePredictor.git'
-        //     }
-        // }
-
         stage('Build Docker Image') {
             steps {
-                sh '''
-                docker build -t heart_disease_predictor .
-                '''
+                echo "Building Docker image..."
+                sh """
+                docker build -t ${IMAGE_NAME}:latest .
+                """
             }
         }
-        
+
         stage('Deploy Container') {
             steps {
-                echo 'Deploying container...'
+                echo "Deploying container..."
                 sh """
+                # Stop old container if exists
+                if [ \$(docker ps -aq -f name=${CONTAINER_NAME}) ]; then
                     docker stop ${CONTAINER_NAME} || true
                     docker rm ${CONTAINER_NAME} || true
+                fi
 
-                    docker run -d \
-                      --name ${CONTAINER_NAME} \
-                      -p 8080:8080 \
-                      ${IMAGE_NAME}:${BUILD_NUMBER}
+                # Run new container
+                docker run -d \
+                    -p ${PORT}:8080 \
+                    --name ${CONTAINER_NAME} \
+                    ${IMAGE_NAME}:latest
                 """
             }
         }
@@ -41,10 +40,14 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline executed successfully'
+            echo "Pipeline completed successfully!"
         }
         failure {
-            echo 'Pipeline failed'
+            echo "Pipeline failed — check logs."
+        }
+        always {
+            echo "Cleaning up workspace..."
+            cleanWs()
         }
     }
 }
