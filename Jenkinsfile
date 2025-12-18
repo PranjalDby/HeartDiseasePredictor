@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "heart_disease_predictor"
         CONTAINER_NAME = "heart_disease_predictor"
-        PORT = "8080"
+        PORT = "5050"
     }
 
     stages {
