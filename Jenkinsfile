@@ -30,7 +30,7 @@ pipeline {
 
                 # Run new container
                 docker run -d \
-                    -p ${PORT}:8080 \
+                    -p ${PORT}:5050 \
                     --name ${CONTAINER_NAME} \
                     ${IMAGE_NAME}:latest
                 """
